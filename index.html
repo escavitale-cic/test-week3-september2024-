@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="List of cards" />
+    <meta name="keywords" content="Card, list of cards" />
+    <meta name="author" content="Christian Perrella" />
+    <title>List of cards</title>
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="head">
+      <div class="container-fluid">
+        <div class="row bg-danger text-white text-center p-4">
+          <h1>Posts</h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <section class="list-of-posts bg-light py-4 px-5">
+      <div class="container w-75">
+        <div class="row mt-4 justify-content-end">
+          <div class="col col-lg-4 col-md-5">
+            <div class="input">
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Default input"
+                aria-label="default input example"
+              />
+            </div>
+          </div>
+        </div>
+        
+        <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-xs-2 g-4 mt-1" id="row">
+          
+        </div>
+        
+        <div class="row mt-4">
+          <div class="col">
+            <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group me-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-primary">1</button>
+                <button type="button" class="btn btn-primary">2</button>
+                <button type="button" class="btn btn-primary">3</button>
+                <button type="button" class="btn btn-primary">4</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="foot">
+      <div class="container-fluid"></div>
+        <div class="row bg-danger text-center p-4 m-0">
+          <p>@ 2024 Posts</p>
+          <p>For info <a href="mailto:Christian.Perrella@ibm.com" class="text-white text-decoration-none">contact me</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      let row = document.getElementById("row");
+      const apiUrl = "https://jsonplaceholder.typicode.com/posts";
+
+      function funct() {
+        fetch(apiUrl)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((userData) => {
+            let card_list = userData;
+
+            card_list.map(function(card_item) {
+            let col = document.createElement('div');
+            col.classList.add("col");
+
+            let card = document.createElement('div');
+            card.classList.add("card");
+            card.classList.add("h-100");
+
+            let card_body = document.createElement('div');
+            card_body.classList.add("card-body");
+
+            let card_title = document.createElement('h5');
+            card_title.classList.add("card-title");
+            card_title.classList.add("fw-semibold");
+
+            let card_text = document.createElement('p');
+            card_text.classList.add("card-text");
+
+            // Set title and body text correctly
+            card_title.innerHTML = `${card_item.title}`;
+            card_text.innerHTML = `${card_item.body}`;
+
+            card_body.appendChild(card_title);
+            card_body.appendChild(card_text);
+            card.appendChild(card_body);
+            col.appendChild(card);
+
+            // Add event listener to redirect to post-details.html when clicked
+            card.addEventListener('click', function() {
+              window.location.href = `post-details.html?title=${encodeURIComponent(card_item.title)}&body=${encodeURIComponent(card_item.body)}`;
+            });
+
+            row.appendChild(col);
+          });
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+      }
+
+      funct();
+    </script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

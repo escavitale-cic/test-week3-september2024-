@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="List of cards" />
+    <meta name="keywords" content="Card, list of cards, post, details" />
+    <meta name="author" content="Christian Perrella" />
+    <title>Post details</title>
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="head">
+      <div class="container-fluid">
+        <div class="row bg-danger text-white text-center p-4">
+          <h1>Post Detail</h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+     <section class="post-details bg-light py-4 px-5">
+      <div class="container w-75 stile">
+        <div class="row">
+          <div class="col">
+            <h2 id="post-title"></h2>
+            <p id="post-body"></p>
+            <button type="button" class="btn btn-danger"><a href="/" class="text-white text-decoration-none">Back To Home</a></button>
+          </div>
+        </div>
+      </div>
+     </section>
+
+    <!-- FOOTER -->
+    <footer class="foot">
+      <div class="container-fluid"></div>
+        <div class="row bg-danger text-center p-4 m-0">
+          <p>@ 2024 Posts</p>
+          <p>For info <a href="mailto:Christian.Perrella@ibm.com" class="text-white text-decoration-none">contact me</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Get the post data from the URL query parameters
+      const params = new URLSearchParams(window.location.search);
+      const postTitle = params.get('title');
+      const postBody = params.get('body');
+
+      document.getElementById('post-title').innerHTML = postTitle;
+      document.getElementById('post-body').innerHTML = postBody;
+    </script>
+    <style src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></style>
+  </body>
+</html>
