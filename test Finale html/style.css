@@ -1,0 +1,47 @@
+
+
+footer {
+    width: 100%;
+    height: 150px;
+    background-color: #ad2a37;
+   
+    
+
+}
+
+.post{
+    font-size:  1.25rem;
+    padding-left: 750px;
+    color:white;
+
+}
+
+.divHeader{
+    width: 100%;
+    height: 100%;
+    background-color: #ad2a37;
+}
+
+.privacy{
+    margin-left: 600px;
+    font-size:1.2rem;
+    color: white;
+}
+
+.row2{
+    padding-left:280px;
+}
+
+a:hover{
+    color:red;
+}
+
+a{
+    color:white;
+    text-decoration: none;
+}
+
+.Policy{
+    color:black;
+
+}
