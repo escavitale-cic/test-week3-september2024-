@@ -1,0 +1,47 @@
+:root {
+    --main-color: #ad2a37;
+    --bg-color: rgb(247, 247, 247);
+}
+
+body {
+    min-height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+card:hover {
+    cursor: pointer;
+}
+
+.header-title {
+    color: white;
+    font-size: 2.5rem;
+}
+
+/* Navbar & Footer style and BackGround */
+.nf-bg {
+    background-color: var(--main-color);
+    padding: 1.5rem;
+}
+
+.post-section {
+    min-height: 100vh;
+}
+
+.details-cont {
+    min-height: 100vh;
+}
+
+.back-btn {
+    padding: 10px 20px;
+    background-color: var(--main-color);
+    border: 1px solid black;
+    border-radius: 3px;
+}
